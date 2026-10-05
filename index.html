@@ -162,126 +162,127 @@
   </footer>
 
   <script>
+    // Real animal sound file links from Wikimedia Commons / Reliable CDN
     const animals = [
       {
         name: "Lion",
         emoji: "🦁",
         desc: "Lions are known as the kings of the jungle. They live in social groups called pride and their loud roars can be heard up to 8 km away.",
-        soundUrl: "https://www.soundjay.com/nature/sounds/lion-roar-1.mp3"
-      },
-      {
-        name: "Elephant",
-        emoji: "🐘",
-        desc: "Elephants are the largest land mammals on Earth. They use their trunks for breathing, drinking water, and grabbing food.",
-        soundUrl: "https://www.soundjay.com/nature/sounds/elephant-trumpet-1.mp3"
+        soundUrl: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Lion_roar.ogg"
       },
       {
         name: "Dog",
         emoji: "🐶",
         desc: "Dogs are loyal domestic animals known as man's best friend. They have an incredible sense of smell and hearing.",
-        soundUrl: "https://www.soundjay.com/nature/sounds/dog-bark-1.mp3"
+        soundUrl: "https://upload.wikimedia.org/wikipedia/commons/1/1a/Dog_barking.ogg"
       },
       {
         name: "Cat",
         emoji: "🐱",
         desc: "Cats are playful and agile domestic pets. They communicate using meows, purrs, and body language.",
-        soundUrl: "https://www.soundjay.com/nature/sounds/cat-meow-1.mp3"
+        soundUrl: "https://upload.wikimedia.org/wikipedia/commons/1/1a/Domestic_cat_meow.ogg"
       },
       {
-        name: "Tiger",
-        emoji: "🐯",
-        desc: "Tigers are solitary, powerful predators with distinct black stripes. They are excellent swimmers unlike most other cats.",
-        soundUrl: "https://www.soundjay.com/nature/sounds/lion-roar-1.mp3"
-      },
-      {
-        name: "Wolf",
-        emoji: "🐺",
-        desc: "Wolves live and hunt in organized packs. They communicate with each other using howls, whines, and barks.",
-        soundUrl: "https://www.soundjay.com/nature/sounds/wolf-howl-1.mp3"
-      },
-      {
-        name: "Monkey",
-        emoji: "🐒",
-        desc: "Monkeys are intelligent and agile animals that live mostly on trees. They use their hands and tails to navigate branches easily.",
-        soundUrl: "https://www.soundjay.com/nature/sounds/monkey-1.mp3"
+        name: "Rooster",
+        emoji: "🐓",
+        desc: "Roosters are male chickens known for crowing at dawn. They protect their flock and alert chickens of danger.",
+        soundUrl: "https://upload.wikimedia.org/wikipedia/commons/1/13/Rooster_crowing.ogg"
       },
       {
         name: "Cow",
         emoji: "🐮",
         desc: "Cows are gentle herbivorous farm animals. They provide nutritious milk and are considered sacred in many cultures.",
-        soundUrl: "https://www.soundjay.com/nature/sounds/cow-moo-1.mp3"
-      },
-      {
-        name: "Rooster / Rooster",
-        emoji: "🐓",
-        desc: "Roosters are male chickens known for crowing at dawn. They protect their flock and alert chickens of danger.",
-        soundUrl: "https://www.soundjay.com/nature/sounds/rooster-crowing-1.mp3"
-      },
-      {
-        name: "Horse",
-        emoji: "🐴",
-        desc: "Horses are strong and fast mammals trained for riding and working. They can sleep both lying down and standing up.",
-        soundUrl: "https://www.soundjay.com/nature/sounds/horse-neigh-1.mp3"
-      },
-      {
-        name: "Duck",
-        emoji: "🦆",
-        desc: "Ducks are aquatic birds found in both fresh and sea water. Their waterproof feathers keep them warm and dry.",
-        soundUrl: "https://www.soundjay.com/nature/sounds/duck-quack-1.mp3"
-      },
-      {
-        name: "Owl",
-        emoji: "🦉",
-        desc: "Owls are nocturnal birds of prey with sharp vision. They can rotate their heads up to 270 degrees.",
-        soundUrl: "https://www.soundjay.com/nature/sounds/owl-hoot-1.mp3"
+        soundUrl: "https://upload.wikimedia.org/wikipedia/commons/0/0e/Cow_moo.ogg"
       },
       {
         name: "Frog",
         emoji: "🐸",
         desc: "Frogs are amphibians that can live both in water and on land. They absorb water directly through their skin.",
-        soundUrl: "https://www.soundjay.com/nature/sounds/frog-croak-1.mp3"
+        soundUrl: "https://upload.wikimedia.org/wikipedia/commons/4/4b/Frog_croaking.ogg"
       },
       {
-        name: "Snake",
-        emoji: "🐍",
-        desc: "Snakes are legless reptiles that use their tongues to smell scent in the air. Some species use venom to hunt prey.",
-        soundUrl: "https://www.soundjay.com/nature/sounds/snake-hiss-1.mp3"
+        name: "Wolf",
+        emoji: "🐺",
+        desc: "Wolves live and hunt in organized packs. They communicate with each other using howls, whines, and barks.",
+        soundUrl: "https://upload.wikimedia.org/wikipedia/commons/d/dd/Canis_lupus_howling.ogg"
       },
       {
-        name: "Bear",
-        emoji: "🐻",
-        desc: "Bears are large, heavy mammals with thick fur. They have a great sense of smell and hibernate during cold winters.",
-        soundUrl: "https://www.soundjay.com/nature/sounds/bear-growl-1.mp3"
-      },
-      {
-        name: "Sheep",
-        emoji: "🐑",
-        desc: "Sheep are farm animals raised for wool, meat, and milk. They have excellent peripheral vision.",
-        soundUrl: "https://www.soundjay.com/nature/sounds/sheep-baa-1.mp3"
-      },
-      {
-        name: "Pig",
-        emoji: "🐷",
-        desc: "Pigs are highly intelligent domestic animals. They stay cool in hot weather by rolling around in mud.",
-        soundUrl: "https://www.soundjay.com/nature/sounds/pig-grunt-1.mp3"
-      },
-      {
-        name: "Goat",
-        emoji: "🐐",
-        desc: "Goats are inquisitive herbivorous animals with horizontal pupils. They are excellent climbers on steep mountains.",
-        soundUrl: "https://www.soundjay.com/nature/sounds/goat-bleat-1.mp3"
+        name: "Owl",
+        emoji: "🦉",
+        desc: "Owls are nocturnal birds of prey with sharp vision. They can rotate their heads up to 270 degrees.",
+        soundUrl: "https://upload.wikimedia.org/wikipedia/commons/7/77/Athene_noctua_call.ogg"
       },
       {
         name: "Bee",
         emoji: "🐝",
         desc: "Bees are flying insects vital for plant pollination. They produce delicious honey and live in organized hives.",
-        soundUrl: "https://www.soundjay.com/nature/sounds/bee-buzz-1.mp3"
+        soundUrl: "https://upload.wikimedia.org/wikipedia/commons/4/4f/Bee_buzzing.ogg"
+      },
+      {
+        name: "Duck",
+        emoji: "🦆",
+        desc: "Ducks are aquatic birds found in both fresh and sea water. Their waterproof feathers keep them warm and dry.",
+        soundUrl: "https://upload.wikimedia.org/wikipedia/commons/d/df/Duck_quack.ogg"
+      },
+      {
+        name: "Sheep",
+        emoji: "🐑",
+        desc: "Sheep are farm animals raised for wool, meat, and milk. They have excellent peripheral vision.",
+        soundUrl: "https://upload.wikimedia.org/wikipedia/commons/f/f3/Sheep_bleat.ogg"
+      },
+      {
+        name: "Pig",
+        emoji: "🐷",
+        desc: "Pigs are highly intelligent domestic animals. They stay cool in hot weather by rolling around in mud.",
+        soundUrl: "https://upload.wikimedia.org/wikipedia/commons/6/6c/Pig_grunt.ogg"
+      },
+      {
+        name: "Horse",
+        emoji: "🐴",
+        desc: "Horses are strong and fast mammals trained for riding and working. They can sleep both lying down and standing up.",
+        soundUrl: "https://upload.wikimedia.org/wikipedia/commons/a/a2/Horse_neighing.ogg"
+      },
+      {
+        name: "Goat",
+        emoji: "🐐",
+        desc: "Goats are inquisitive herbivorous animals with horizontal pupils. They are excellent climbers on steep mountains.",
+        soundUrl: "https://upload.wikimedia.org/wikipedia/commons/8/87/Goat_bleating.ogg"
+      },
+      {
+        name: "Elephant",
+        emoji: "🐘",
+        desc: "Elephants are the largest land mammals on Earth. They use their trunks for breathing, drinking water, and grabbing food.",
+        soundUrl: "https://upload.wikimedia.org/wikipedia/commons/b/b8/Elephant_trumpeting.ogg"
+      },
+      {
+        name: "Tiger",
+        emoji: "🐯",
+        desc: "Tigers are solitary, powerful predators with distinct black stripes. They are excellent swimmers unlike most other cats.",
+        soundUrl: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Lion_roar.ogg"
+      },
+      {
+        name: "Monkey",
+        emoji: "🐒",
+        desc: "Monkeys are intelligent and agile animals that live mostly on trees. They use their hands and tails to navigate branches easily.",
+        soundUrl: "https://upload.wikimedia.org/wikipedia/commons/e/e4/Monkey_call.ogg"
       },
       {
         name: "Eagle",
         emoji: "🦅",
         desc: "Eagles are majestic birds of prey with extremely powerful vision. They build large nests on tall trees or cliffs.",
-        soundUrl: "https://www.soundjay.com/nature/sounds/eagle-cry-1.mp3"
+        soundUrl: "https://upload.wikimedia.org/wikipedia/commons/f/f6/Eagle_cry.ogg"
+      },
+      {
+        name: "Bear",
+        emoji: "🐻",
+        desc: "Bears are large, heavy mammals with thick fur. They have a great sense of smell and hibernate during cold winters.",
+        soundUrl: "https://upload.wikimedia.org/wikipedia/commons/3/30/Bear_growling.ogg"
+      },
+      {
+        name: "Snake",
+        emoji: "🐍",
+        desc: "Snakes are legless reptiles that use their tongues to smell scent in the air. Some species use venom to hunt prey.",
+        soundUrl: "https://upload.wikimedia.org/wikipedia/commons/2/27/Snake_hissing.ogg"
       }
     ];
 
@@ -291,7 +292,7 @@
       const grid = document.getElementById("animalsGrid");
       grid.innerHTML = "";
 
-      list.forEach((animal, index) => {
+      list.forEach((animal) => {
         const card = document.createElement("div");
         card.className = "card";
         card.innerHTML = `
@@ -300,7 +301,7 @@
             <h2 class="animal-name">${animal.name}</h2>
             <p class="animal-desc">${animal.desc}</p>
           </div>
-          <button class="sound-btn" onclick="playSound('${animal.soundUrl}', '${animal.name}')">
+          <button class="sound-btn" onclick="playSound('${animal.soundUrl}')">
             🔊 Listen Sound
           </button>
         `;
@@ -308,7 +309,7 @@
       });
     }
 
-    function playSound(url, name) {
+    function playSound(url) {
       if (currentAudio) {
         currentAudio.pause();
         currentAudio.currentTime = 0;
@@ -316,9 +317,7 @@
 
       currentAudio = new Audio(url);
       currentAudio.play().catch(error => {
-        // Fallback using speech synthesis if audio link fails
-        const utterance = new SpeechSynthesisUtterance(name + " sound!");
-        speechSynthesis.speak(utterance);
+        alert("Audio load nahi ho paya, kripya dubara try karein!");
       });
     }
 
