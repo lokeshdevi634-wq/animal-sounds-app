@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🐾 Animal Sounds & Facts Directory</title>
+  <style>
+    :root {
+      --primary: #4ab8a1;
+      --bg: #181920;
+      --card-bg: #222430;
+      --text: #ffffff;
+      --subtext: #a0a5b5;
+      --accent: #ffb703;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    header p {
+      color: var(--subtext);
+      font-size: 1rem;
+    }
+
+    .search-box {
+      max-width: 500px;
+      margin: 20px auto 0;
+      display: flex;
+      gap: 10px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 12px 20px;
+      border-radius: 30px;
+      border: 2px solid #333646;
+      background-color: #1c1e29;
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    .search-box input:focus {
+      border-color: var(--primary);
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      border: 1px solid #2e3245;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: transform 0.2s, border-color 0.2s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+    }
+
+    .animal-emoji {
+      font-size: 4rem;
+      margin-bottom: 10px;
+    }
+
+    .animal-name {
+      font-size: 1.4rem;
+      color: #fff;
+      margin-bottom: 8px;
+      text-transform: capitalize;
+    }
+
+    .animal-desc {
+      font-size: 0.9rem;
+      color: var(--subtext);
+      line-height: 1.5;
+      margin-bottom: 15px;
+      flex-grow: 1;
+    }
+
+    .sound-btn {
+      background-color: var(--primary);
+      color: #121319;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 25px;
+      font-weight: bold;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .sound-btn:hover {
+      background-color: #52cbaf;
+    }
+
+    .sound-btn:active {
+      transform: scale(0.96);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: var(--subtext);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🐾 20 Wild & Domestic Animals</h1>
+    <p>Click on "Listen Sound" to hear real animal sounds and learn quick facts!</p>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search animal (e.g. Lion, Elephant)..." onkeyup="filterAnimals()">
+    </div>
+  </header>
+
+  <div class="grid-container" id="animalsGrid"></div>
+
+  <footer>
+    <p>Created for Learning & Fun 🦁🐘 | Made with HTML, CSS & JavaScript</p>
+  </footer>
+
+  <script>
+    const animals = [
+      {
+        name: "Lion",
+        emoji: "🦁",
+        desc: "Lions are known as the kings of the jungle. They live in social groups called pride and their loud roars can be heard up to 8 km away.",
+        soundUrl: "https://www.soundjay.com/nature/sounds/lion-roar-1.mp3"
+      },
+      {
+        name: "Elephant",
+        emoji: "🐘",
+        desc: "Elephants are the largest land mammals on Earth. They use their trunks for breathing, drinking water, and grabbing food.",
+        soundUrl: "https://www.soundjay.com/nature/sounds/elephant-trumpet-1.mp3"
+      },
+      {
+        name: "Dog",
+        emoji: "🐶",
+        desc: "Dogs are loyal domestic animals known as man's best friend. They have an incredible sense of smell and hearing.",
+        soundUrl: "https://www.soundjay.com/nature/sounds/dog-bark-1.mp3"
+      },
+      {
+        name: "Cat",
+        emoji: "🐱",
+        desc: "Cats are playful and agile domestic pets. They communicate using meows, purrs, and body language.",
+        soundUrl: "https://www.soundjay.com/nature/sounds/cat-meow-1.mp3"
+      },
+      {
+        name: "Tiger",
+        emoji: "🐯",
+        desc: "Tigers are solitary, powerful predators with distinct black stripes. They are excellent swimmers unlike most other cats.",
+        soundUrl: "https://www.soundjay.com/nature/sounds/lion-roar-1.mp3"
+      },
+      {
+        name: "Wolf",
+        emoji: "🐺",
+        desc: "Wolves live and hunt in organized packs. They communicate with each other using howls, whines, and barks.",
+        soundUrl: "https://www.soundjay.com/nature/sounds/wolf-howl-1.mp3"
+      },
+      {
+        name: "Monkey",
+        emoji: "🐒",
+        desc: "Monkeys are intelligent and agile animals that live mostly on trees. They use their hands and tails to navigate branches easily.",
+        soundUrl: "https://www.soundjay.com/nature/sounds/monkey-1.mp3"
+      },
+      {
+        name: "Cow",
+        emoji: "🐮",
+        desc: "Cows are gentle herbivorous farm animals. They provide nutritious milk and are considered sacred in many cultures.",
+        soundUrl: "https://www.soundjay.com/nature/sounds/cow-moo-1.mp3"
+      },
+      {
+        name: "Rooster / Rooster",
+        emoji: "🐓",
+        desc: "Roosters are male chickens known for crowing at dawn. They protect their flock and alert chickens of danger.",
+        soundUrl: "https://www.soundjay.com/nature/sounds/rooster-crowing-1.mp3"
+      },
+      {
+        name: "Horse",
+        emoji: "🐴",
+        desc: "Horses are strong and fast mammals trained for riding and working. They can sleep both lying down and standing up.",
+        soundUrl: "https://www.soundjay.com/nature/sounds/horse-neigh-1.mp3"
+      },
+      {
+        name: "Duck",
+        emoji: "🦆",
+        desc: "Ducks are aquatic birds found in both fresh and sea water. Their waterproof feathers keep them warm and dry.",
+        soundUrl: "https://www.soundjay.com/nature/sounds/duck-quack-1.mp3"
+      },
+      {
+        name: "Owl",
+        emoji: "🦉",
+        desc: "Owls are nocturnal birds of prey with sharp vision. They can rotate their heads up to 270 degrees.",
+        soundUrl: "https://www.soundjay.com/nature/sounds/owl-hoot-1.mp3"
+      },
+      {
+        name: "Frog",
+        emoji: "🐸",
+        desc: "Frogs are amphibians that can live both in water and on land. They absorb water directly through their skin.",
+        soundUrl: "https://www.soundjay.com/nature/sounds/frog-croak-1.mp3"
+      },
+      {
+        name: "Snake",
+        emoji: "🐍",
+        desc: "Snakes are legless reptiles that use their tongues to smell scent in the air. Some species use venom to hunt prey.",
+        soundUrl: "https://www.soundjay.com/nature/sounds/snake-hiss-1.mp3"
+      },
+      {
+        name: "Bear",
+        emoji: "🐻",
+        desc: "Bears are large, heavy mammals with thick fur. They have a great sense of smell and hibernate during cold winters.",
+        soundUrl: "https://www.soundjay.com/nature/sounds/bear-growl-1.mp3"
+      },
+      {
+        name: "Sheep",
+        emoji: "🐑",
+        desc: "Sheep are farm animals raised for wool, meat, and milk. They have excellent peripheral vision.",
+        soundUrl: "https://www.soundjay.com/nature/sounds/sheep-baa-1.mp3"
+      },
+      {
+        name: "Pig",
+        emoji: "🐷",
+        desc: "Pigs are highly intelligent domestic animals. They stay cool in hot weather by rolling around in mud.",
+        soundUrl: "https://www.soundjay.com/nature/sounds/pig-grunt-1.mp3"
+      },
+      {
+        name: "Goat",
+        emoji: "🐐",
+        desc: "Goats are inquisitive herbivorous animals with horizontal pupils. They are excellent climbers on steep mountains.",
+        soundUrl: "https://www.soundjay.com/nature/sounds/goat-bleat-1.mp3"
+      },
+      {
+        name: "Bee",
+        emoji: "🐝",
+        desc: "Bees are flying insects vital for plant pollination. They produce delicious honey and live in organized hives.",
+        soundUrl: "https://www.soundjay.com/nature/sounds/bee-buzz-1.mp3"
+      },
+      {
+        name: "Eagle",
+        emoji: "🦅",
+        desc: "Eagles are majestic birds of prey with extremely powerful vision. They build large nests on tall trees or cliffs.",
+        soundUrl: "https://www.soundjay.com/nature/sounds/eagle-cry-1.mp3"
+      }
+    ];
+
+    let currentAudio = null;
+
+    function renderAnimals(list) {
+      const grid = document.getElementById("animalsGrid");
+      grid.innerHTML = "";
+
+      list.forEach((animal, index) => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <div>
+            <div class="animal-emoji">${animal.emoji}</div>
+            <h2 class="animal-name">${animal.name}</h2>
+            <p class="animal-desc">${animal.desc}</p>
+          </div>
+          <button class="sound-btn" onclick="playSound('${animal.soundUrl}', '${animal.name}')">
+            🔊 Listen Sound
+          </button>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function playSound(url, name) {
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+      }
+
+      currentAudio = new Audio(url);
+      currentAudio.play().catch(error => {
+        // Fallback using speech synthesis if audio link fails
+        const utterance = new SpeechSynthesisUtterance(name + " sound!");
+        speechSynthesis.speak(utterance);
+      });
+    }
+
+    function filterAnimals() {
+      const query = document.getElementById("searchInput").value.toLowerCase();
+      const filtered = animals.filter(a => a.name.toLowerCase().includes(query) || a.desc.toLowerCase().includes(query));
+      renderAnimals(filtered);
+    }
+
+    // Initial Render
+    renderAnimals(animals);
+  </script>
+</body>
+</html>
